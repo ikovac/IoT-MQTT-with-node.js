@@ -1,0 +1,16 @@
+{
+  "name": "mqttpublisher",
+  "version": "1.0.0",
+  "description": "Simple mqtt nodejs publisher",
+  "main": "app.js",
+  "dependencies": {
+    "mqtt": "^2.18.0",
+    "serialport": "^4.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ivo Kovacevic",
+  "license": "ISC"
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sensor station</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1>Weather Station</h1>
+
+<div id="ghum"></div>
+<div id="gtemp"></div>
+
+<script src="javascripts/raphael-2.1.4.min.js"></script>
+<script src="javascripts/justgage.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+    // Ako zelis da ti radi i na mobitelu, umisto localhost stavi ip adresu računala
+    var socket = io.connect('http://localhost:3000');
+
+    socket.on('sensor-temp', function (data) {
+        g2.refresh(Number(data));
+    });
+    socket.on('sensor-hum', function (data) {
+        g1.refresh(Number(data));
+    });
+
+    var g1 = new JustGage({
+        id: "ghum",
+        value: 0,
+        min: 0,
+        max: 100,
+        title: "Humidity [%]"
+    });
+
+    var g2 = new JustGage({
+        id: "gtemp",
+        value: 0,
+        min: -40,
+        max: 125,
+        title: "Temperature [°C]"
+    });
+</script>
+
+</body>
+</html>
